@@ -11,5 +11,8 @@ preview: song-without-words-preview.pdf
 %-preview.pdf: %.ly
 	$(LILYPOND) $(LILYPONDPREVIEWFLAGS) -o $*-preview $<
 
+watch:
+	fswatch -o *.ly | xargs -n1 -I{} make preview
+
 clean:
 	$(RM) *.pdf *.midi
